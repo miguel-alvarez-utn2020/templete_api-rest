@@ -1,12 +1,13 @@
 const express = require("express");
-const fs = require("fs");
 const router = express.Router();
+const { getItems, getItem, createItem } = require("../controllers/tracks");
 
-router.get("/", (req, res) => {
-    const data = ["hola", "mundo"];
 
-    res.send({data});
-})
+router.get("/", getItems);
+
+router.post("/", createItem);
+
+
 
 
 module.exports = router;
