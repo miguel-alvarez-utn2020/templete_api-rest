@@ -1,15 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const { validationCreateItem } = require('../validators/tracks');
+const { validationCreateItem, validationGetItem } = require('../validators/tracks');
 const customHeader = require('../middlewere/customHeader')
-const { getItems, createItem } = require("../controllers/tracks");
+const { getItems, createItem, getItem, updateItem, deleteItem } = require("../controllers/tracks");
 
 
 router.get("/", getItems);
 
-router.post("/", validationCreateItem, customHeader, createItem);
+router.post("/", validationCreateItem, createItem);
 
+router.get("/:id", validationGetItem, getItem);
 
+router.put("/:id", validationGetItem, validationCreateItem,  updateItem);
 
+router.delete("/:id", validationGetItem, validationCreateItem, deleteItem);
 
 module.exports = router;
