@@ -18,7 +18,7 @@ const tokenSign = async (user) => {
 //verifica el token
 const verifyToken = async (tokenJwt) => {
   try {
-    return Jwt.verify(tokenJwt, JWT_SECRET);
+    return jwt.verify(tokenJwt, JWT_SECRET);
   } catch (e) {
     return null;
   }
